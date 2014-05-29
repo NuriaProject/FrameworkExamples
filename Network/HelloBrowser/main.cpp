@@ -25,9 +25,10 @@
 /*******************************************************************************
  * This is an example for the Nuria Framework.
  * You can find the description under:
- * https://github.com/NuriaProject/FrameworkExamples/wiki/Hello%20Browser
+ * https://github.com/NuriaProject/FrameworkExamples/wiki/Hello-Browser
  ******************************************************************************/
 
+// [2]
 void mySlot (Nuria::HttpClient *client) {
 	client->write ("<h1>Hello world</h1>");
 }
@@ -35,9 +36,13 @@ void mySlot (Nuria::HttpClient *client) {
 int main (int argc, char *argv[]) {
 	QCoreApplication a (argc, argv);
 	
+	// [1]
 	Nuria::HttpServer server;
+	
+	// [3]
 	server.root ()->connectSlot ("index", mySlot);
 	
+	// [4]
 	if (!server.listen (QHostAddress::Any, 8080)) {
 		qDebug("Failed to listen on port 8080.");
 		return 1;
