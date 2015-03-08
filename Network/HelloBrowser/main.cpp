@@ -20,7 +20,7 @@
 #include <nuria/httpclient.hpp>
 #include <nuria/httpserver.hpp>
 #include <nuria/httpnode.hpp>
-#include <nuria/debug.hpp>
+#include <nuria/logger.hpp>
 
 /*******************************************************************************
  * This is an example for the Nuria Framework.
@@ -44,10 +44,10 @@ int main (int argc, char *argv[]) {
 	
 	// [4]
 	if (!server.listen (QHostAddress::Any, 8080)) {
-		qDebug("Failed to listen on port 8080.");
+		nError() << "Failed to listen on port 8080.";
 		return 1;
 	}
 	
-	qDebug("Running. Now go to http://127.0.0.1:8080/");
+	nLog() << "Running. Now go to http://127.0.0.1:8080/";
 	return a.exec ();
 }
